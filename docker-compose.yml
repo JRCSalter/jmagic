@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  httpd:
+    build:
+      context: ./httpd
+    container_name: "httpd-server"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./www:/usr/local/apache2/htdocs
+    depends_on:
+      - script-lang
+    networks:
+      - backend
+
+  script-lang:
+    build:
+      context: ./php
+    container_name: "script-lang-engine"
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
+    volumes:
+      - ./www:/usr/local/apache2/htdocs/
+
+networks:
+  backend:
