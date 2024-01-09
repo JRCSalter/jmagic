@@ -9,9 +9,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./www:/usr/local/apache2/htdocs
+      - ./app:/usr/local/apache2/htdocs
     depends_on:
       - script-lang
+      - db
     networks:
       - backend
 
@@ -24,7 +25,35 @@ services:
     networks:
       - backend
     volumes:
-      - ./www:/usr/local/apache2/htdocs/
+      - ./app:/usr/local/apache2/htdocs/
+
+  db:
+    build:
+      context: ./mysql
+    container_name: "db-server"
+    environment:
+      MYSQL_DATABASE: jrcs
+      MYSQL_USER: jrcs
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+    volumes:
+      - ./db:/var/lib/mysql/
+
+  admin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    depends_on:
+      - db
+    networks:
+      - backend
 
 networks:
   backend:
