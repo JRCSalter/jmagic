@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.3.1-fpm
 
 COPY $PWD/php.ini /usr/local/etc/php/
 

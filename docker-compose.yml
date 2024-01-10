@@ -9,7 +9,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./app:/usr/local/apache2/htdocs
+      - ./src:/usr/local/apache2/htdocs
     depends_on:
       - script-lang
       - db
@@ -25,7 +25,7 @@ services:
     networks:
       - backend
     volumes:
-      - ./app:/usr/local/apache2/htdocs/
+      - ./src:/usr/local/apache2/htdocs/
 
   db:
     build:
