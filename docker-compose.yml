@@ -1,0 +1,59 @@
+version: "3.5"
+
+services:
+  httpd:
+    build:
+      context: ./httpd
+    container_name: "httpd-server"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/usr/local/apache2/htdocs
+    depends_on:
+      - script-lang
+      - db
+    networks:
+      - backend
+
+  script-lang:
+    build:
+      context: ./php
+    container_name: "script-lang-engine"
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
+    volumes:
+      - ./src:/usr/local/apache2/htdocs/
+
+  db:
+    build:
+      context: ./mysql
+    container_name: "db-server"
+    environment:
+      MYSQL_DATABASE: jrcs
+      MYSQL_USER: jrcs
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+    volumes:
+      - ./db:/var/lib/mysql/
+
+  admin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    depends_on:
+      - db
+    networks:
+      - backend
+
+networks:
+  backend:
