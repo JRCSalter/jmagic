@@ -1,2 +1,6 @@
+# www.jmagic.com
+
+Sitemap: https://www.jmagic.com/sitemap.xml
+
 User-agent: *
 Disallow:

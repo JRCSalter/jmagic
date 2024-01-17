@@ -1,4 +1,4 @@
-# SPRINT 1 - SSETUP
+# SPRINT 1 - SETUP
 
 Need to do all of this before building the app.
 
@@ -31,6 +31,10 @@ Create Docker image. Include:
 Design the database.
 
 # TODO
+
+# IN PROCESS
+
+# DONE
 
 ## Version Control
 
@@ -75,7 +79,3 @@ Design the database with the following tables:
 * Decks
 * Cards (from Scryfall) and Collections junction table
 * Cards (from Scryfall) and Decks junction table
-
-# IN PROCESS
-
-# DONE

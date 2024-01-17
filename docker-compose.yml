@@ -32,7 +32,7 @@ services:
       context: ./mysql
     container_name: "db-server"
     environment:
-      MYSQL_DATABASE: jrcs
+      MYSQL_DATABASE: jmagic
       MYSQL_USER: jrcs
       MYSQL_PASSWORD: password
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
