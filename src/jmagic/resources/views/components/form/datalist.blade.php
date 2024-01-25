@@ -3,16 +3,11 @@
     'options',
     'required' => false,
     'label' => '',
+    'function' => '',
 ])
 
-<?php
-
-$options = explode(';;', $options);
-
-?>
-
 <label for="{{ $id }}"><?= $label == "" ? ucfirst($id) : $label ?></label>
-<input type="text" list="{{ $id }}">
+<input type="text" list="{{ $id }}" id="{{ $id . '_input' }}" {!! $function !!}>
 <datalist id="{{ $id }}" {{ $attributes }}>
     @if(!$required)
         <option value="" selected>-</option>

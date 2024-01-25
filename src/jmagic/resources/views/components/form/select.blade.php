@@ -5,12 +5,6 @@
     'label' => '',
 ])
 
-<?php
-
-$options = explode(';;', $options);
-
-?>
-
 <label for="{{ $id }}"><?= $label == "" ? ucfirst($id) : $label ?></label>
 <select id="{{ $id }}" {{ $attributes }}>
     @if(!$required)
