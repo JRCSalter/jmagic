@@ -8,6 +8,6 @@
     id="{{ $id }}"
     name="{{ $id }}"
     type="text"
-    {{ $attributes }}
+    {{ $attributes(['value' => old($id)]) }}
 >
 

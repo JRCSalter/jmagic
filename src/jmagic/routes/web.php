@@ -3,6 +3,7 @@
 use App\Http\Controllers\BinderController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\DeckController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,12 +12,11 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
-
+Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 Route::delete('/login', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::get('/register', function () {
-    return view('register/create');
-});
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/collection', [CollectionController::class, 'index']);
 Route::get('/collection/edit', [CollectionController::class, 'edit']);//->middleware('auth');

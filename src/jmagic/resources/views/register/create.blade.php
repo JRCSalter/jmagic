@@ -1,11 +1,13 @@
 <x-layout title="Register with JMagic">
     <h2 role="heading" aria-level="2">Register</h2>
 
-    <form action="/login/store" method="POST">
-        <x-form.email required autofocus />
+    <form action="/register" method="POST">
+        @csrf
+        <x-form.input id="username" :value="old('username')" required autofocus />
+        <x-form.email required />
         <x-form.password required />
         <x-form.password
-            id="password-check"
+            id="password_confirmation"
             label="Confirm Password"
             placeholder="Confirm your password..."
             required

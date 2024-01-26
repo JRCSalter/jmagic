@@ -160,18 +160,18 @@ Give a user privileged access to the app:
 * Log in
 * Log out
 
-## Sprint 4 - Cards
-
-Add card functionality:
-* Display Card info
-* Search for a card
-
-## Sprint 5 - Collections
+## Sprint 4 - Collections
 
 Add functionality for collections:
 * Create collection
 * Add cards
 * Remove Cards
+
+## Sprint 5 - Cards
+
+Add card functionality:
+* Display Card info
+* Search for a card
 
 ## Sprint 6 - Decks
 
